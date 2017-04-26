@@ -10,6 +10,14 @@ namespace UnitTestingDemo
     {
         static void Main(string[] args)
         {
+            try
+            {
+                SimpleParserTests.Test1();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }       
         }
     }
 }
