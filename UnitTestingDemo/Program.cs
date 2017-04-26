@@ -12,7 +12,7 @@ namespace UnitTestingDemo
         {
             try
             {
-                SimpleParserTests.Test1();
+                SimpleParserTests.TestReturnsZeroWhenEmptyString();
             }
             catch(Exception e)
             {
