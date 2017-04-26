@@ -15,8 +15,7 @@ namespace UnitTestingDemo
             else if (!numbers.Contains(","))
                 return int.Parse(numbers);
             else
-                throw new NotImplementedException("Wright now can only parse zero or one number");
-               
+                throw new NotImplementedException("Wright now can only parse zero or one number");               
         }
     }
 }
