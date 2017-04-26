@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace LogAndNotification
 {
-    public class Program
+    public class LogAnalyzer
     {
-        static void Main(string[] args)
+        public bool IsLogFileNameValid (string fileName)
         {
-
+            if (fileName.EndsWith(".SLF"))
+                return false;
+            return true;
         }
     }
 }
