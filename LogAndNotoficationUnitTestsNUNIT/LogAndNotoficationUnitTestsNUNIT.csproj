@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="ExampleWithSetUpTearDown.cs" />
     <Compile Include="LogAnalyzerTestsNUNIT.cs" />
+    <Compile Include="MemCalculatorTestsNUNIT.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
