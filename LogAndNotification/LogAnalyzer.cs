@@ -10,7 +10,10 @@ namespace LogAndNotification
     {
         public bool IsLogFileNameValid (string fileName)
         {
-            if (!fileName.EndsWith(".slf", StringComparison.CurrentCultureIgnoreCase))
+            if (fileName == null)
+                throw new ArgumentException("File has to have a name!");
+
+            else if (!fileName.EndsWith(".slf", StringComparison.CurrentCultureIgnoreCase))
                 return false;
             return true;
         }
