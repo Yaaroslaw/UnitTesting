@@ -18,7 +18,7 @@ namespace LogAndNotificationUnitTestsVSTESTER
         }
 
         [TestMethod]
-        [TestCategory("NiceTests")]
+        [TestCategory("ExtensionTests")]
         public void IsLogFileNameValid_BadExtension_ReturnsFalse()
         {
             //Arrange
@@ -31,7 +31,7 @@ namespace LogAndNotificationUnitTestsVSTESTER
             Assert.IsFalse(result);
         }
 
-        [TestMethod]
+        [TestCategory("ExtensionTests")]
         public void IsLogFileNameValid_GoodExtensionLowerCase_ReturnsTrue()
         {
             //Arrange
@@ -45,6 +45,7 @@ namespace LogAndNotificationUnitTestsVSTESTER
         }
 
         [TestMethod]
+        [TestCategory("ExtensionTests")]
         public void IsLogFileNameValid_GoodExtensionUpperCase_ReturnsTrue()
         {
             //Arrange
@@ -64,6 +65,7 @@ namespace LogAndNotificationUnitTestsVSTESTER
         /// Bad way to it, as if there are other exceptions, the test will pass nonetheless.
         /// </summary>
         [TestMethod]
+        [TestCategory("ExceptionTests")]
         [ExpectedException(typeof(ArgumentException), "File has to have a name!")]
         public void IsLogFileNameValid_EmptyString_ReturnsException()
         {
@@ -74,6 +76,31 @@ namespace LogAndNotificationUnitTestsVSTESTER
             var result = analyzer.IsLogFileNameValid("");
         }
 
+        [TestMethod]
+        [TestCategory("SystemStateTests")]
+        public void IsLogFileName_WhenCalled_ChangesWasLastNameValidFalse()
+        {
+            //Arrange
+            LogAnalyzer analyzer = MakeAnalyzer();
+
+            //Act
+            var result = analyzer.IsLogFileNameValid("badExtension.foo");
+            //Assert
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        [TestCategory("SystemStateTests")]
+        public void IsLogFileName_WhenCalled_ChangesWasLastNameValidTrue()
+        {
+            //Arrange
+            LogAnalyzer analyzer = MakeAnalyzer();
+
+            //Act
+            var result = analyzer.IsLogFileNameValid("goodExtension.slf");
+            //Assert
+            Assert.IsTrue(result);
+        }
 
         [TestMethod]
         [Ignore]
