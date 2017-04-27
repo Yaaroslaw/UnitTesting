@@ -20,6 +20,28 @@ namespace LogAndNotificationUnitTests
             //Assert
             Assert.IsFalse(result);
         }
+
+        [TestMethod]
+        public void IsLogFileNameValid_GoodExtensionLowerCase_ReturnsTrue()
+        {
+            //Arrange
+            LogAnalyzer analyzer = new LogAnalyzer();
+            //Act
+            var result = analyzer.IsLogFileNameValid("fileWithAGoodExtensionLowercase.slf");
+            //Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void IsLogFileNameValid_GoodExtensionUpperCase_ReturnsTrue()
+        {
+            //Arrange
+            LogAnalyzer analyzer = new LogAnalyzer();
+            //Act
+            var result = analyzer.IsLogFileNameValid("fileWithAGoodExtentionUpperCase.SLF");
+            //Assert
+            Assert.IsTrue(result);
+        }
     }
 }
 

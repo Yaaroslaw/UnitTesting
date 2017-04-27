@@ -10,7 +10,7 @@ namespace LogAndNotification
     {
         public bool IsLogFileNameValid (string fileName)
         {
-            if (fileName.EndsWith(".SLF"))
+            if (!fileName.EndsWith(".slf", StringComparison.CurrentCultureIgnoreCase))
                 return false;
             return true;
         }
