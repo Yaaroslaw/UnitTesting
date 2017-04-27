@@ -72,5 +72,13 @@ namespace LogAndNotificationUnitTestsVSTESTER
             //Act
             var result = analyzer.IsLogFileNameValid("");
         }
+
+
+        [TestMethod]
+        [Ignore]
+        public void notWorkingTest()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
