@@ -17,24 +17,14 @@ namespace LogAndNotoficationUnitTestsNUNIT
             Assert.IsFalse(result);
         }
 
-        [Test]
-        public void IsLogFileNameValid_GoodExtensionLowerCase_ReturnsTrue()
+        [TestCase("fileWithAGoodExtensionLowercase.slf")]
+        [TestCase("fileWithAGoodExtentionUpperCase.SLF")]
+        public void IsLogFileNameValid_GoodExtensions_ReturnsTrue(string fileName)
         {
             //Arrange
             LogAnalyzer analyzer = new LogAnalyzer();
             //Act
-            var result = analyzer.IsLogFileNameValid("fileWithAGoodExtensionLowercase.slf");
-            //Assert
-            Assert.IsTrue(result);
-        }
-
-        [Test]
-        public void IsLogFileNameValid_GoodExtensionUpperCase_ReturnsTrue()
-        {
-            //Arrange
-            LogAnalyzer analyzer = new LogAnalyzer();
-            //Act
-            var result = analyzer.IsLogFileNameValid("fileWithAGoodExtentionUpperCase.SLF");
+            var result = analyzer.IsLogFileNameValid(fileName);
             //Assert
             Assert.IsTrue(result);
         }
