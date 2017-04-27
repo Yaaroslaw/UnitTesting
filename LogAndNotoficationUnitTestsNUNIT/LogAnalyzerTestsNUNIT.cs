@@ -7,7 +7,7 @@ namespace LogAndNotoficationUnitTestsNUNIT
     public class LogAnalyzerTestsNUNIT
     {
         [Test]
-        public void IsLogFileNameValid_BadExtension_ReturnsFalse()
+        public void IsLogFileNameValid_BadExtensions_ReturnsFalse()
         {
             // Arrange
             LogAnalyzer analyzer = new LogAnalyzer();

@@ -2,10 +2,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LogAndNotification;
 
-namespace LogAndNotificationUnitTests
+namespace LogAndNotificationUnitTestsVSTESTER
 {
     [TestClass]
-    public class LogAnalyzerTests
+    public class LogAnalyzerTestsVSTESTER
     {
         /// <summary>
         /// Code convention: [UnitOfWorkName]_[ScenarioUnderTest]_[ExpectedBehavior].
@@ -13,35 +13,25 @@ namespace LogAndNotificationUnitTests
         [TestMethod]
         public void IsLogFileNameValid_BadExtension_ReturnsFalse()
         {
-            // Arrange
             LogAnalyzer analyzer = new LogAnalyzer();
-            //Act
             var result = analyzer.IsLogFileNameValid("invalidFileName.Foo");
-            //Assert
             Assert.IsFalse(result);
         }
 
         [TestMethod]
         public void IsLogFileNameValid_GoodExtensionLowerCase_ReturnsTrue()
         {
-            //Arrange
             LogAnalyzer analyzer = new LogAnalyzer();
-            //Act
-            var result = analyzer.IsLogFileNameValid("fileWithAGoodExtensionLowercase.slf");
-            //Assert
+            var result = analyzer.IsLogFileNameValid("validFileName.slf");
             Assert.IsTrue(result);
         }
 
         [TestMethod]
         public void IsLogFileNameValid_GoodExtensionUpperCase_ReturnsTrue()
         {
-            //Arrange
             LogAnalyzer analyzer = new LogAnalyzer();
-            //Act
-            var result = analyzer.IsLogFileNameValid("fileWithAGoodExtentionUpperCase.SLF");
-            //Assert
+            var result = analyzer.IsLogFileNameValid("validFileName.SLF");
             Assert.IsTrue(result);
         }
     }
 }
-
