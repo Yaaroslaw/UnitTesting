@@ -18,6 +18,7 @@ namespace LogAndNotificationUnitTestsVSTESTER
         }
 
         [TestMethod]
+        [TestCategory("NiceTests")]
         public void IsLogFileNameValid_BadExtension_ReturnsFalse()
         {
             //Arrange
@@ -76,6 +77,7 @@ namespace LogAndNotificationUnitTestsVSTESTER
 
         [TestMethod]
         [Ignore]
+        [TestCategory("IgnoredTests")]
         public void notWorkingTest()
         {
             throw new NotImplementedException();

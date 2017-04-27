@@ -13,6 +13,7 @@ namespace LogAndNotoficationUnitTestsNUNIT
         }
 
         [Test]
+        [Category("NiceTests")]
         public void IsLogFileNameValid_BadExtensions_ReturnsFalse()
         {
             // Arrange
@@ -27,6 +28,7 @@ namespace LogAndNotoficationUnitTestsNUNIT
 
         [TestCase("fileWithAGoodExtensionLowercase.slf")]
         [TestCase("fileWithAGoodExtentionUpperCase.SLF")]
+        [Category("NiceTests")]
         public void IsLogFileNameValid_GoodExtensions_ReturnsTrue(string fileName)
         {
             //Arrange
@@ -40,6 +42,7 @@ namespace LogAndNotoficationUnitTestsNUNIT
         }
 
         [Test]
+        [Category("NiceTests")]
         public void IsLogFileNameValid_EmptyString_ReturnsException()
         {
             //Arrange
@@ -51,6 +54,15 @@ namespace LogAndNotoficationUnitTestsNUNIT
                                                                                      //test passes, if not or exception is thrown
                                                                                      // by other parts of the code - doesn't.
             StringAssert.Contains("File has to have a name!", ex.Message);
+        }
+
+
+        [Test]
+        [Ignore("This test is not implemented yet")]
+        [Category("IgnoredTests")]
+        public void notWorkingTest()
+        {
+            throw new NotImplementedException();
         }
     }
 }
