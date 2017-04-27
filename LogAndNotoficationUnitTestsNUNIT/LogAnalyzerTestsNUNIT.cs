@@ -11,8 +11,10 @@ namespace LogAndNotoficationUnitTestsNUNIT
         {
             // Arrange
             LogAnalyzer analyzer = new LogAnalyzer();
+
             //Act
             var result = analyzer.IsLogFileNameValid("invalidFileName.Foo");
+
             //Assert
             Assert.IsFalse(result);
         }
@@ -23,8 +25,10 @@ namespace LogAndNotoficationUnitTestsNUNIT
         {
             //Arrange
             LogAnalyzer analyzer = new LogAnalyzer();
+
             //Act
             var result = analyzer.IsLogFileNameValid(fileName);
+
             //Assert
             Assert.IsTrue(result);
         }
