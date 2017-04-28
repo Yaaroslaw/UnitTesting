@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FancyLogAnalyzer.cs" />
     <Compile Include="LogAnalyzer.cs" />
     <Compile Include="MemCalculator.cs" />
     <Compile Include="Program.cs" />
