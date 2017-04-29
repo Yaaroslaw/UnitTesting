@@ -1,46 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
+using System.Collections.ObjectModel;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Linq.Expressions;
+using System.Threading;
 
 namespace LogAndNotoficationUnitTestsNUNIT
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.Data.Entity;
-    using System.Linq;
-    using System.Linq.Expressions;
-    using System.Threading;
-    using System.Threading.Tasks;
-
-    public class AsyncListProvider : System.Data.Entity.Infrastructure.IDbAsyncQueryProvider
+    public class AsyncListProvider : IDbAsyncQueryProvider
     {
-        private IQueryProvider provider;
-        public AsyncListProvider(IQueryProvider Provider)
+        private readonly IQueryProvider _provider;
+        public AsyncListProvider(IQueryProvider provider)
         {
-            provider = Provider;
+            _provider = provider;
         }
         public IQueryable CreateQuery(Expression expression)
         {
-            return provider.CreateQuery(expression);
+            return _provider.CreateQuery(expression);
         }
 
         public IQueryable<TElement> CreateQuery<TElement>(Expression expression)
         {
-            return provider.CreateQuery<TElement>(expression);
+            return _provider.CreateQuery<TElement>(expression);
         }
 
         public object Execute(Expression expression)
         {
-            return provider.Execute(expression);
+            return _provider.Execute(expression);
         }
 
         public TResult Execute<TResult>(Expression expression)
         {
-            return provider.Execute<TResult>(expression);
+            return _provider.Execute<TResult>(expression);
         }
 
         public Task<object> ExecuteAsync(Expression expression, CancellationToken cancellationToken)
@@ -50,7 +45,7 @@ namespace LogAndNotoficationUnitTestsNUNIT
 
         public Task<TResult> ExecuteAsync<TResult>(Expression expression, CancellationToken cancellationToken)
         {
-            return Task<TResult>.Run<TResult>(() => Execute<TResult>(expression), cancellationToken);
+            return Task.Run(() => Execute<TResult>(expression), cancellationToken);
         }
     }
 
@@ -72,20 +67,11 @@ namespace LogAndNotoficationUnitTestsNUNIT
         {
             return _data.GetEnumerator();
         }
-        public Expression Expression
-        {
-            get { return Expression.Constant(_data.AsQueryable()); }
-        }
+        public Expression Expression => Expression.Constant(_data.AsQueryable());
 
-        public Type ElementType
-        {
-            get { return typeof(T); }
-        }
+        public Type ElementType => typeof(T);
 
-        public IQueryProvider Provider
-        {
-            get { return new AsyncListProvider(_data.AsQueryable().Provider); }
-        }
+        public IQueryProvider Provider => new AsyncListProvider(_data.AsQueryable().Provider);
 
         public T Find(params object[] keyValues)
         {
@@ -125,10 +111,7 @@ namespace LogAndNotoficationUnitTestsNUNIT
             throw new NotImplementedException();
         }
 
-        public ObservableCollection<T> Local
-        {
-            get { return new ObservableCollection<T>(_data); }
-        }
+        public ObservableCollection<T> Local => new ObservableCollection<T>(_data);
 
         Expression IQueryable.Expression
         {
