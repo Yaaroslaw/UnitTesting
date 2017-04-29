@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace LogAndNotoficationUnitTestsNUNIT
 {
     [TestFixture]
-    public class MemCalculatorTestsNUNIT
+    public class MemCalculatorTestsNunit
     {
         private MemCalculator MakeCalculator() // Fabrical method 
         {

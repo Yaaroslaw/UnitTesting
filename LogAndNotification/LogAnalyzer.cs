@@ -11,7 +11,7 @@ namespace LogAndNotification
             if (string.IsNullOrEmpty(fileName))
                 throw new ArgumentException("File has to have a name!");
 
-            else if (!fileName.EndsWith(".slf", StringComparison.CurrentCultureIgnoreCase))
+            if (!fileName.EndsWith(".slf", StringComparison.CurrentCultureIgnoreCase))
                 return false;
 
             WasLastNameValid = true; // Change the state of the system

@@ -5,19 +5,19 @@ namespace LogAndNotoficationUnitTestsNUNIT
 {
     public class ExampleWithSetUpTearDown
     {
-        private LogAnalyzer analyzer = null;
+        private LogAnalyzer _analyzer = null;
 
         [SetUp]
         public void SetUp()
         {
             // Arrange 
-            analyzer = new LogAnalyzer();
+            _analyzer = new LogAnalyzer();
         }
         [Test]
         public void IsLogFileNameValid_BadExtensions_ReturnsFalse()
         {    
             //Act
-            var result = analyzer.IsLogFileNameValid("invalidFileName.Foo");
+            var result = _analyzer.IsLogFileNameValid("invalidFileName.Foo");
 
             //Assert
             Assert.IsFalse(result);
@@ -28,7 +28,7 @@ namespace LogAndNotoficationUnitTestsNUNIT
         public void IsLogFileNameValid_GoodExtensions_ReturnsTrue(string fileName)
         {
             //Act
-            var result = analyzer.IsLogFileNameValid(fileName);
+            var result = _analyzer.IsLogFileNameValid(fileName);
 
             //Assert
             Assert.IsTrue(result);
@@ -37,7 +37,7 @@ namespace LogAndNotoficationUnitTestsNUNIT
         [TearDown]
         public void TearDown()
         {
-            analyzer = null; //Demonstration of anti-pattern, actually this line is not needed.
+            _analyzer = null; //Demonstration of anti-pattern, actually this line is not needed.
         }
     }
 }
